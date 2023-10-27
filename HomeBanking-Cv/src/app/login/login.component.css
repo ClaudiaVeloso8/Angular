@@ -1,0 +1,15 @@
+mat-card {
+  max-width: 400px;
+  margin: 2em auto;
+  text-align: center;
+  background-color:aquamarine;
+  color: black;
+}
+  
+mat-form-field {
+  display: block;
+  width: 350px; /* Definir a largura desejada */
+  margin: 0 auto;
+  
+}
+

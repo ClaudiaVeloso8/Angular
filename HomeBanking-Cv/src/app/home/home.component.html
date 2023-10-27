@@ -1,0 +1,129 @@
+<!-- Header -->
+<mat-toolbar color="accent" fxLayout="row" fxLayoutAlign="space-between center">
+  <span id="action-title" style="color:dark;">
+    <i class="fas fa-home"></i> {{title}}
+  </span>
+  <!-- Logout -->
+  <div id="menu-list" fxLayout="row" fxShow="false" fxShow.gt-sm>
+    <button mat-button *ngIf="isAuthenticated" (click)="logout()">
+      <i class="fas fa-home"></i> Logout 
+    </button>
+  </div>
+</mat-toolbar>
+
+<!-- Imagem -->
+<div style="text-align: center; width: 100%; margin-top: 50px;">
+  <img src="./assets/images/images(1).jpg" alt="Descrição da Imagem" style="width: 100%; height: 300px; object-fit: cover;">
+</div>
+
+
+
+
+
+
+<!-- utilizador card -->
+<mat-card *ngIf="loggedUser">
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <!-- Utilizador Informacao -->
+    <div>
+      <h3>Client - {{loggedUser['username']}}</h3>
+    </div>
+    <!-- valor total -->
+    <div>
+      <h3>Order Account - {{loggedUser['accountValue']}}€</h3>
+    </div>
+    <!-- Opcoes -->
+    <div id="options-list" fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <!-- Deposito Butao -->
+      <button mat-button color="grey" class="options-button" (click) ="doDepositClick()">
+        Make a deposit
+      </button>
+      <!-- deposito Botao -->
+      <button mat-button color="grey" class="options-button" (click)="doWithdrawalClick()">
+        Make a Withdrawal
+      </button>
+      <!-- Action List Button -->
+      <button mat-button color="grey" class="options-button" (click)="showActionListClick()">
+        Transactions List 
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Deposito Form -->
+<mat-card *ngIf="doDeposit">
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <form #depositForm="ngForm" (ngSubmit)="onSubmitDeposit()">
+      <div>
+        <h3>Deposit your account</h3>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput type="number" placeholder="Deposit" fxLayoutAlign="center center"[(ngModel)]="amountValue" name="deposit" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="grey">Deposit</button>
+      </div>
+    </form>
+    <div class="alert alert-danger" *ngIf="actionError">
+      The deposit amount must be a valid integer number.
+    </div>
+    <div class="alert alert-success" *ngIf="actionSucess">
+      Deposit successful.
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- levantamento Form -->
+<mat-card *ngIf="doWithdrawal">
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <form #withdrawalForm="ngForm" (ngSubmit)="onSubmitWithdraw()">
+      <div>
+        <h3>Withdraw your account</h3>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput type="number" placeholder="withdraw" [(ngModel)]="amountValue" name="withdrawal" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-raised-button color="grey">Withdraw</button>
+      </div>
+    </form>
+    <div class="alert alert-danger" *ngIf="actionError">
+      The withdrawal amount must be a valid integer number.
+    </div>
+    <div class="alert alert-success" *ngIf="actionSucess">
+      Withdrawal successful.
+    </div>
+    <div class="alert alert-danger" *ngIf="actionAmount">
+      You do not have this amount in your balance.
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<!-- Código HTML -->
+
+<mat-card *ngIf="showActionList">
+  <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+    <div>
+      <h3>Transaction list</h3>
+    </div>
+    <div>
+      <!--tabela de transações  -->
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Cancel</button>
+    <button mat-button color="grey">Save</button>
+  </mat-card-actions>
+  
+</mat-card>
+<div>
+
+<!-- Rodapé -->
+<footer class="custom-footer" style="color:accent">
+  <span>HomeBanking-ClaudiaVeloso</span>
+</footer>
+

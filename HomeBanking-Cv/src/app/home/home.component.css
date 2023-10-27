@@ -1,0 +1,55 @@
+#action-title {
+  flex: 1;
+}
+
+mat-card {
+  max-width: 600px;
+  margin: 2em auto;
+  text-align: center;
+  background-color: #fff;
+  color: black;
+}
+
+button {
+  margin: 0 auto;
+}
+  
+#options-list {
+  flex: 1;
+}
+
+.options-button {
+  margin: 5px;
+}
+
+table {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  min-width: 500px;
+}
+
+/* CSS atualizado */
+#app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Define a altura mínima da página como 100% da altura visível do viewport */
+  padding-bottom: 60px; /* Ajuste o valor conforme necessário para acomodar o rodapé */
+}
+
+.custom-footer {
+  background-color: aquamarine;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: accent;
+}
+/* CSS personalizado para os botões */
+.options-button {
+  margin: 5px;
+  border: 1px solid grey; /* Adiciona uma borda sólida de 1px com a cor cinza */
+  border-radius: 4px; /* Adiciona bordas arredondadas de 4px */
+  padding: 8px 16px; /* Adiciona preenchimento interno de 8px no topo e na base e 16px nos lados esquerdo e direito */
+}
